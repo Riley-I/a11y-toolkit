@@ -1,0 +1,102 @@
+// Front-end + editor styles.
+// Un-enhanced (no JS): the saved headings and sections render as normal
+// document content, so there is deliberately very little styling here.
+
+.wp-block-a11y-tabs {
+
+	&.is-enhanced {
+
+		> .tab-list {
+			display: flex;
+			flex-wrap: wrap; // Reflow instead of horizontal scrolling at 400% zoom.
+			gap: 0.25em;
+			border-block-end: 1px solid currentcolor;
+		}
+
+		.tab-button {
+			margin: 0;
+			margin-block-end: -1px; // Overlap the tablist border.
+			padding: 0.5em 1em;
+			font: inherit;
+			color: inherit;
+			background: transparent;
+			cursor: pointer;
+
+			// Transparent (not "none") borders still render in forced-colors
+			// mode, where they are painted with a system color, so the tab
+			// shapes stay visible to Windows High Contrast users.
+			border: 1px solid transparent;
+			border-block-end-width: 3px;
+
+			// The selected state is shown by a thick bottom border *and* weight,
+			// not color alone (WCAG 1.4.1).
+			&[aria-selected="true"] {
+				border-color: currentcolor;
+				border-block-end-color: currentcolor;
+				font-weight: 700;
+			}
+
+			&:hover:not([aria-selected="true"]) {
+				border-block-end-color: currentcolor;
+				border-block-end-style: dotted;
+			}
+
+			// Use outline, not box-shadow: box-shadow is dropped in forced-colors
+			// mode, outline is kept. currentColor keeps contrast with whatever
+			// text color the theme uses (WCAG 2.4.7 / 2.4.11).
+			&:focus-visible {
+				outline: 3px solid currentcolor;
+				outline-offset: 2px;
+			}
+		}
+
+		> .wp-block-a11y-tab > .tab-panel {
+			padding-block: 1em;
+
+			&:focus-visible {
+				outline: 3px solid currentcolor;
+				outline-offset: 2px;
+			}
+
+			// Guard against themes setting display on <section> and thereby
+			// overriding the UA [hidden] rule.
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		> .wp-block-a11y-tab > .tab-title[hidden] {
+			display: none;
+		}
+	}
+}
+
+// Only animate state changes for users who haven't asked for reduced motion.
+@media (prefers-reduced-motion: no-preference) {
+
+	.wp-block-a11y-tabs.is-enhanced .tab-button {
+		transition:
+			border-color 150ms ease,
+			outline-offset 150ms ease;
+	}
+}
+
+@media (forced-colors: active) {
+
+	.wp-block-a11y-tabs.is-enhanced .tab-button {
+		// Make the selected tab and focus ring use system colors so they keep
+		// meaning under the user's chosen palette.
+		&[aria-selected="true"] {
+			border-color: CanvasText;
+			border-block-end-color: Highlight;
+		}
+
+		&:focus-visible {
+			outline-color: Highlight;
+		}
+	}
+
+	.wp-block-a11y-tabs.is-enhanced > .wp-block-a11y-tab > .tab-panel:focus-visible {
+		outline-color: Highlight;
+	}
+}

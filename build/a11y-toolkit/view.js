@@ -1,1 +1,0 @@
-console.log("Hello World! (from a11y-a11y-toolkit block)");

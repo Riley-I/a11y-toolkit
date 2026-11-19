@@ -1,0 +1,12 @@
+// Editor-only: visually group each tab's title with its panel content.
+.wp-block-a11y-tab {
+
+	> .tab-title {
+		margin-block: 0 0.5em;
+	}
+
+	> .tab-panel {
+		padding-inline-start: 1em;
+		border-inline-start: 2px solid currentcolor;
+	}
+}

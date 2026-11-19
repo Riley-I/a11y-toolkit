@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "a11y/tabs",
+	"version": "0.1.0",
+	"title": "Tabs",
+	"category": "widgets",
+	"icon": "index-card",
+	"description": "Accessible tabs following the WAI-ARIA APG Tabs pattern. Content stays readable as headings and sections without JavaScript.",
+	"keywords": [ "tabs", "tablist", "aria" ],
+	"allowedBlocks": [ "a11y/tab" ],
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"activation": {
+			"type": "string",
+			"enum": [ "automatic", "manual" ],
+			"default": "automatic"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "a11y-toolkit",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScriptModule": "file:./view.js"
+}
