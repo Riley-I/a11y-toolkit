@@ -1,0 +1,12 @@
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/tab/editor.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+.wp-block-a11y-tab > .tab-title {
+  margin-block: 0 0.5em;
+}
+.wp-block-a11y-tab > .tab-panel {
+  padding-inline-start: 1em;
+  border-inline-start: 2px solid currentcolor;
+}
+
+/*# sourceMappingURL=index.css.map*/

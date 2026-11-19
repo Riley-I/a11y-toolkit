@@ -1,0 +1,9 @@
+// Editor-only: separate the stacked tabs so authors can see where each starts.
+.wp-block-a11y-tabs {
+	padding: 0.5em;
+	border: 1px dashed currentcolor;
+
+	> .wp-block-a11y-tab + .wp-block-a11y-tab {
+		margin-block-start: 1em;
+	}
+}
